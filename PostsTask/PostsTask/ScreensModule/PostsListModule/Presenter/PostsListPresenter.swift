@@ -11,11 +11,9 @@ class PostsListPresenter: PostsListViewToPresenterProtocol {
 
 	var view: PostsListPresenterToViewProtocol?
 	var interactor: PostsScreenPresenterToInteractor?
-//	var router: PostsListPresenterToRouter?
 
 	private var currentPage = 1
-	private var isFetching = false
-	private var hasMoreData: Bool = false  // Track if more data is available
+	private var hasNextPageMore: Bool = false
 
 	var posts: [Post]? = []
 
@@ -25,15 +23,12 @@ class PostsListPresenter: PostsListViewToPresenterProtocol {
 	}
 
 	func loadMorePosts() {
-		// Load more posts when user scrolls to the bottom
-		guard !isFetching && hasMoreData  else { return } // check dh 3shan lw already by3ml loading
+		guard hasNextPageMore  else { return }
 		currentPage += 1
 		interactor?.fetchPosts(currentPage: currentPage)
 	}
 
 	func didPullToRefresh() {
-		// Refresh posts with latest data
-//		currentPage = 1
 		view?.clearPosts()
 		currentPage = 1
 		interactor?.fetchPosts(currentPage: currentPage)
@@ -51,10 +46,6 @@ class PostsListPresenter: PostsListViewToPresenterProtocol {
 		return item
 	}
 
-	func loadPostAt(index: Int) {
-//		interactor?.fetchPostAt(index: index + 10)
-	}
-
 	func clearPosts() {
 		posts?.removeAll()
 	}
@@ -63,34 +54,24 @@ class PostsListPresenter: PostsListViewToPresenterProtocol {
 
 
 extension PostsListPresenter: PostsScreenInteractorToPresenter {
-	func didFetchPost(post: Post) {
-		view?.hideLoadingIndicator()
-		posts?.append(post)
-//		view?.displayPosts(posts ?? [], isCached: false)
-	}
 
-
-	func didFetchPostsSuccessfully(posts: [Post], isCached: Bool, hasMore: Bool) {
-		isFetching = false
-		self.hasMoreData = hasMore  // Update hasMoreData flag based on response
+	func didFetchPostsSuccessfully(posts: [Post], isCached: Bool, hasNextPageMore: Bool) {
+		self.hasNextPageMore = hasNextPageMore
 		view?.hideLoadingIndicator()
 
-		print("Posts received in presenter: \(posts.count)")
-		self.posts?.append(contentsOf: posts)//append(contentsOf: posts)
+		self.posts?.append(contentsOf: posts)
+
 		view?.displayPosts(posts, isCached: isCached)
-		// in case no internet show error
-//		if isCached {
-//			// Handle the error
-//			view?.showError(message: "Failed to load posts. Please check your connection.")
-//		}
+
+		if isCached {
+			view?.showNetworkStatus(message: "please connect to server to get new posts")
+		}
 	}
 
 	func didFailToFetchPosts(with error: String) {
-		isFetching = false
 		view?.hideLoadingIndicator()
 
-		// Handle the error
-//		view?.showError(message: "Failed to load posts. Please check your connection.")
+		view?.showNetworkStatus(message: "please connect to server to get new posts")
 	}
 
 	

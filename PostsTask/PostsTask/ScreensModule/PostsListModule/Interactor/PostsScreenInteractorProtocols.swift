@@ -8,9 +8,7 @@
 import Foundation
 
 protocol PostsScreenInteractorToPresenter {
-
-	func didFetchPostsSuccessfully(posts: [Post], isCached: Bool, hasMore: Bool)
-	func didFetchPost(post: Post)
+	func didFetchPostsSuccessfully(posts: [Post], isCached: Bool, hasNextPageMore: Bool)
 	func didFailToFetchPosts(with error: String)
 
 }

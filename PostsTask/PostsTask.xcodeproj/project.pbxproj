@@ -28,6 +28,7 @@
 		DA7749C62C9F259400C9A729 /* PostDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7749C52C9F259400C9A729 /* PostDetailsPresenter.swift */; };
 		DA7749C82C9F261800C9A729 /* PostDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7749C72C9F261800C9A729 /* PostDetailsRouter.swift */; };
 		DAFB6A472CA1B31D00612741 /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAFB6A452CA1B31D00612741 /* Posts.xcdatamodeld */; };
+		DAFB6A492CA1F6BD00612741 /* PostsListViewController+UITableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB6A482CA1F6BD00612741 /* PostsListViewController+UITableViewDelegates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		DA7749C52C9F259400C9A729 /* PostDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsPresenter.swift; sourceTree = "<group>"; };
 		DA7749C72C9F261800C9A729 /* PostDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsRouter.swift; sourceTree = "<group>"; };
 		DAFB6A462CA1B31D00612741 /* Posts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Posts.xcdatamodel; sourceTree = "<group>"; };
+		DAFB6A482CA1F6BD00612741 /* PostsListViewController+UITableViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostsListViewController+UITableViewDelegates.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				DA7749A22C9F144000C9A729 /* PostsListViewController.swift */,
+				DAFB6A482CA1F6BD00612741 /* PostsListViewController+UITableViewDelegates.swift */,
 				DA7749A92C9F150B00C9A729 /* PostsTableViewCell.swift */,
 			);
 			path = View;
@@ -303,6 +306,7 @@
 			files = (
 				DA77499B2C9F0F2000C9A729 /* SplashScreenViewController.swift in Sources */,
 				DA77499D2C9F0F9400C9A729 /* SplashScreenRouter.swift in Sources */,
+				DAFB6A492CA1F6BD00612741 /* PostsListViewController+UITableViewDelegates.swift in Sources */,
 				DA77497F2C9F0B2500C9A729 /* AppDelegate.swift in Sources */,
 				DAFB6A472CA1B31D00612741 /* Posts.xcdatamodeld in Sources */,
 				DA7749B92C9F220A00C9A729 /* PostsListService.swift in Sources */,

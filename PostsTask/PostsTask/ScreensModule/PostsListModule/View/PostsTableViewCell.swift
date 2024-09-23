@@ -38,22 +38,41 @@ class PostTableViewCell: UITableViewCell {
 
 	func setupViews() {
 		let stackView = UIStackView(arrangedSubviews: [postTitleLabel, postDescLabel])
+
+
+		let designView = UIView()
+		designView.translatesAutoresizingMaskIntoConstraints = false
+		designView.addSubview(stackView)
+		designView.backgroundColor = UIColor(named: "PostBackground")
+		designView.layer.cornerRadius = 7
+
+
+
 		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.alignment = .leading
+		stackView.alignment = .fill
 		stackView.axis = .vertical
 		stackView.distribution = .fill
-		stackView.spacing = 8
+		stackView.spacing = 12
 
-		self.addSubview(stackView)
+		self.addSubview(designView)
 
 		NSLayoutConstraint.activate([
-			stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-			stackView.leadingAnchor.constraint(
+			designView.topAnchor.constraint(equalTo: self.topAnchor),
+			designView.leadingAnchor.constraint(
 				equalTo: self.leadingAnchor, constant: 8),
-			stackView.trailingAnchor.constraint(
+			designView.trailingAnchor.constraint(
 				equalTo: self.trailingAnchor, constant: -8),
-			stackView.bottomAnchor.constraint(
+			designView.bottomAnchor.constraint(
 				equalTo: self.bottomAnchor, constant: -8),
+
+			stackView.topAnchor.constraint(equalTo: designView.topAnchor,
+										   constant: 8),
+			stackView.leadingAnchor.constraint(
+				equalTo: designView.leadingAnchor, constant: 8),
+			stackView.trailingAnchor.constraint(
+				equalTo: designView.trailingAnchor, constant: -8),
+			stackView.bottomAnchor.constraint(
+				equalTo: designView.bottomAnchor, constant: -16),
 
 		])
 	}
